@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+:root,
+
+
+/* General */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fondo general */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.titulo{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600; 
+  font-style: italic; 
+  margin: 20px;
+  margin-top: 30px;
+ 
+}
+.subtitulo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20 px;
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.subtitulo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  
+}
+/* Carouseel*/
+
+.carousel-container {
+  position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la altura visible de la ventana */
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.carousel-item {
+  position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-controles {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Agregar animaciones de transición */
+.carousel-item.active {
+  display: block;
+  animation: fade 1s ease-in-out;
+}
+
+@keyframes fade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Botones*/
+
+.button-container {
+
+  display: flex;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  gap: 20px;
+  margin-top: 30px;
+  z-index: 1000; /* Asegura que esté encima del contenido */
+  position: sticky;
+  top: 0; /* Lo posiciona en la parte superior */
+  left: 0; /* Alinea a la izquierda */
+  width: 100%; /* Ocupa todo el ancho de la página */
+background-color: white; /* Fondo blanco para que contraste */
+  padding: 10px 0; /* Espaciado interno */
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  padding: 10px 20px;
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-btn:hover {
+  color: #FF6F00;
+}
+
+.nav-btn.active::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #FF6F00;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+
+/* Estilos del contenedor de las tarjetas */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding: 20px;
+  background: #FFCE00;
+  gap: 20px;
+  margin: 20px 0;
+  margin-top: 40px;
+}
+
+
+
+/* Estilos de cada tarjeta */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  height: 350px; /* Establecer una altura fija para las tarjetas */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Estilo para las imágenes dentro de las tarjetas */
+.card img {
+  width: 100%;
+  height: 200px; /* Altura fija para las imágenes */
+  object-fit: cover; /* Esto asegura que las imágenes mantengan la proporción y cubran todo el espacio sin distorsionarse */
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Estilo para los textos dentro de la tarjeta */
+.card h4 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.buy-btn {
+  background-color: #0066cc;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buy-btn:hover {
+  background-color: #004f99;
+}
+
+/* Efecto hover sobre las tarjetas */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsivo 2 columnas en pantallas medianas */
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsivo: 1 columna en pantallas pequeñas */
+@media (max-width: 480px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*adicional*/
+.scroll-text {
+  position: absolute;
+  margin: 10px 0;
+  white-space: nowrap; /* el texto no se quiebra en varias líneas */
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: #333;
+  animation: moveText 10s linear infinite; /* Animación continua*/
+ 
+}
+
+@keyframes moveText {
+  0% {
+    transform: translateX(-100%); /* Comienza fuera de la pantalla a la izquierda */
+  }
+  100% {
+    transform: translateX(100%); /* Termina fuera de la pantalla a la derecha */
+  }
+}
+
+/*/Final scrollin*/
+
+
+h2 {
+  background: 50% 100%/50% 50% no-repeat radial-gradient(ellipse at bottom, #fff, transparent, transparent);
+  -webkit-background-clip: text;
+  margin:20px;
+  margin-bottom: 20px;
+  background-clip: text;
+  color: transparent;
+  font-size: 10vw;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-animation: reveal 3000ms ease-in-out forwards 200ms, glow 2500ms linear infinite 2000ms;
+          animation: reveal 3000ms ease-in-out forwards 200ms, glow 2500ms linear infinite 2000ms;
+}
+@-webkit-keyframes reveal {
+  80% {
+    letter-spacing: 8px;
+  }
+  100% {
+    background-size: 300% 300%;
+  }
+}
+@keyframes reveal {
+  80% {
+    letter-spacing: 8px;
+  }
+  100% {
+    background-size: 300% 300%;
+  }
+}
+@-webkit-keyframes glow {
+  40% {
+    text-shadow: 0 0 8px #fff;
+  }
+}
+@keyframes glow {
+  40% {
+    text-shadow: 0 0 8px #fff;
+  }
+}
